@@ -153,7 +153,12 @@ function RunOnEdit() {
   const handleUpdate = (value: boolean) => {
     updateRegexItem(Number(parmas.id), 'placement', value);
   };
-  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.runOnEdit)} />;
+  return (
+    <div>
+      <Label>{t('Regex.runOnEdit')}</Label>
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.runOnEdit)} />;
+    </div>
+  );
 }
 
 function SubstituteRegex() {
@@ -163,7 +168,12 @@ function SubstituteRegex() {
   const handleUpdate = (value: boolean) => {
     updateRegexItem(Number(parmas.id), 'substituteRegex', value);
   };
-  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.substituteRegex)} />;
+  return (
+    <div>
+      <Label>{t('Regex.substituteRegex')}</Label>
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.substituteRegex)} />;
+    </div>
+  );
 }
 
 function MarkdownOnly() {
@@ -173,7 +183,12 @@ function MarkdownOnly() {
   const handleUpdate = (value: boolean) => {
     updateRegexItem(Number(parmas.id), 'markdownOnly', value);
   };
-  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.markdownOnly)} />;
+  return (
+    <div>
+      <Label>{t('Regex.markdownOnly')}</Label>
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.markdownOnly)} />;
+    </div>
+  );
 }
 
 function PromptOnly() {
@@ -183,7 +198,12 @@ function PromptOnly() {
   const handleUpdate = (value: boolean) => {
     updateRegexItem(Number(parmas.id), 'promptOnly', value);
   };
-  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.promptOnly)} />;
+  return (
+    <div>
+      <Label>{t('Regex.promptOnly')}</Label>
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.promptOnly)} />;
+    </div>
+  );
 }
 
 function RegexEditor() {

@@ -62,7 +62,10 @@
     "script_name": "脚本名称",
     "switch": "开关",
     "maxDepth": "最大深度",
-    "minDepth": "最小深度"
+    "minDepth": "最小深度",
+    "substituteRegex": "替换正则表达式",
+    "markdownOnly": "仅格式化显示",
+    "promptOnly": "仅格式化提示词"
   },
   "ok": "确认",
   "Nav": {
