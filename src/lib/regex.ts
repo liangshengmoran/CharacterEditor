@@ -1,9 +1,8 @@
+import { db } from '@/db/schema';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { toast } from 'sonner';
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
-
-import { db, RegexScriptsTable } from '@/db/schema';
 
 const regexScriptsTableSchema = z.object({
   id: z.string(),
@@ -17,8 +16,8 @@ const regexScriptsTableSchema = z.object({
   promptOnly: z.boolean(),
   runOnEdit: z.boolean(),
   substituteRegex: z.boolean(),
-  minDepth: z.union([z.number(), z.null()]),
-  maxDepth: z.union([z.number(), z.null()]),
+  minDepth: z.number(),
+  maxDepth: z.number(),
 });
 
 export function getAllRegexScriptLists() {
@@ -28,23 +27,22 @@ export function getAllRegexScriptLists() {
         id,
         uuid,
         scriptName,
-      }))
-    )
+      })),
+    ),
   );
   return rows;
 }
 
-
-export function getRegexScript(id:number){
-  try{
-    const rows = db.regexScripts.get(id).then((row)=>{
-      if(row){
-        return row
+export function getRegexScript(id: number) {
+  try {
+    const rows = db.regexScripts.get(id).then((row) => {
+      if (row) {
+        return row;
       }
-    })
-    return rows
-  }catch(e){
-    throw e
+    });
+    return rows;
+  } catch (e) {
+    throw e;
   }
 }
 
@@ -52,8 +50,8 @@ export async function addRegexScript(scriptName: string) {
   const rows = await db.regexScripts.add({
     uuid: uuidv4(),
     scriptName: scriptName,
-    findRegex: "",
-    replaceString: "",
+    findRegex: '',
+    replaceString: '',
     trimStrings: [],
     placement: [],
     disabled: false,
@@ -71,9 +69,9 @@ export async function deleteRegexxScript(id: number) {
 }
 
 export async function importRegex() {
-  const input = document.createElement("input");
-  input.type = "file";
-  input.accept = ".json";
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
   input.onchange = async (event: any) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -82,7 +80,7 @@ export async function importRegex() {
       const json = JSON.parse(fileContent);
       const result = await regexScriptsTableSchema.safeParse(json);
       if (!result.success) {
-        console.log("error file type");
+        console.log('error file type');
         return;
       }
       const { id, ...rest } = result.data;
@@ -91,7 +89,7 @@ export async function importRegex() {
         uuid: id,
       };
       await db.regexScripts.add(regex);
-      toast.success("Add Regex:" + regex.scriptName)
+      toast.success('Add Regex:' + regex.scriptName);
     } catch (e) {
       throw e;
     }
@@ -99,36 +97,36 @@ export async function importRegex() {
   input.click();
 }
 
-export async function updateScript_Name(id:number,value:string) {
-  try{
-    const rows = await db.regexScripts.update(id,{"scriptName":value})
-    if(!rows) return "!ERROR"
-    console.log(rows)
-  }catch(e){
-    console.log(e)
-    return
+export async function updateScript_Name(id: number, value: string) {
+  try {
+    const rows = await db.regexScripts.update(id, { scriptName: value });
+    if (!rows) return '!ERROR';
+    console.log(rows);
+  } catch (e) {
+    console.log(e);
+    return;
   }
 }
 
-export async function updateFind_Regex(id:number,value:string) {
-  try{
-    const rows = await db.regexScripts.update(id,{"findRegex":value})
-    if(!rows) return "!ERROR"
-    console.log(rows)
-  }catch(e){
-    console.log(e)
-    return
+export async function updateFind_Regex(id: number, value: string) {
+  try {
+    const rows = await db.regexScripts.update(id, { findRegex: value });
+    if (!rows) return '!ERROR';
+    console.log(rows);
+  } catch (e) {
+    console.log(e);
+    return;
   }
 }
 
-export async function updateReplaceString(id:number,value:string) {
-  try{
-    const rows = await db.regexScripts.update(id,{"replaceString":value})
-    if(!rows) return "!ERROR"
-    console.log(rows)
-  }catch(e){
-    console.log(e)
-    return
+export async function updateReplaceString(id: number, value: string) {
+  try {
+    const rows = await db.regexScripts.update(id, { replaceString: value });
+    if (!rows) return '!ERROR';
+    console.log(rows);
+  } catch (e) {
+    console.log(e);
+    return;
   }
 }
 
@@ -136,7 +134,7 @@ export async function updateIsEnable(id: number) {
   try {
     const currentItem = await db.regexScripts.get(id);
     if (!currentItem) {
-      return "!ERROR: Item not found";
+      return '!ERROR: Item not found';
     }
     const currentDisabled = currentItem.disabled;
 
@@ -144,12 +142,22 @@ export async function updateIsEnable(id: number) {
 
     const rows = await db.regexScripts.update(id, { disabled: newDisabled });
 
-    if (!rows) return "!ERROR: Update failed"; 
+    if (!rows) return '!ERROR: Update failed';
 
-    console.log("Update successful, new disabled value:", newDisabled);
-    return newDisabled; 
+    console.log('Update successful, new disabled value:', newDisabled);
+    return newDisabled;
   } catch (e) {
-    console.error("Error updating disabled value:", e);
-    return "!ERROR: "
+    console.error('Error updating disabled value:', e);
+    return '!ERROR: ';
+  }
+}
+
+export async function updateRegexItem(regexId: number, field: string, value: any) {
+  try {
+    const rows = await db.regexScripts.update(regexId, {
+      [`${field}` as any]: value,
+    });
+  } catch (e) {
+    console.log(e);
   }
 }

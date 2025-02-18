@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "AI Character Card Editor | OoC Moe",
-    "description": "Edit AI character cards online, supporting TavernAI" 
+    "description": "Edit AI character cards online, supporting Sillytavern"
   },
   "hero": "AI Character Card Editor | OoC Moe",
   "character_editor": "AI Character Card Editor",
@@ -41,9 +41,9 @@
     "creator_notes": "Creator Notes",
     "description": "Character Core Description",
     "first_mes": "Opening Message",
-    "mes_example": "Example Character Messages",
-    "personality": "Personality",
-    "post_history_instructions": "Post-History Instructions",
+    "mes_example": "Character Message Example",
+    "personality": "Character Personality",
+    "post_history_instructions": "Post History Instructions",
     "scenario": "Interaction Background",
     "system_prompt": "Override System Prompt",
     "tags": "Embedded Tags"
@@ -51,14 +51,18 @@
   "WorldBook": {
     "keys": "Trigger Keywords",
     "secondary_keys": "Secondary Keywords",
-    "keys_placeholder": "Keyword1, Keyword2, Keyword3..."
+    "keys_placeholder": "Keyword1, Keyword2, Keyword3...",
+    "second_keys": "Secondary Trigger Keywords",
+    "comment": "Entry Name"
   },
   "Regex": {
     "find_regex": "Regex Match",
     "replace_with": "Replace With",
     "playground": "Try it out",
     "script_name": "Script Name",
-    "switch": "Switch"
+    "switch": "Switch",
+    "maxDepth": "Maximum Depth",
+    "minDepth": "Minimum Depth"
   },
   "ok": "OK",
   "Nav": {
@@ -92,11 +96,34 @@
   "status": "Service Status",
   "advanced": "Advanced Options",
   "importGallery": "This action will overwrite data",
-  "input keyword and image": "Please input keyword and image",
+  "input keyword and image": "Please enter a keyword and image",
   "select image": "Select Image",
   "keyword": "Keyword",
   "gallery_list": "Gallery List",
   "faq": "FAQ",
   "select greetings": "Select Greetings",
-  "type messages": "Please input content"
+  "type messages": "Please enter content",
+  "switch": "Switch",
+  "main": "Main",
+  "other": "Other",
+  "null": "Null",
+  "export ready": "Export Ready",
+  "selected": "Selected",
+  "Mode": {
+    "system": "Follow System",
+    "dark": "Dark Mode",
+    "light": "Light Mode"
+  },
+  "Worldbook": {
+    "stratgy": "Status",
+    "depth": "Depth",
+    "order": "Order",
+    "probability": "Probability",
+    "selectiveLogic": "Secondary Keyword Logic",
+    "anywherewith": "With Any",
+    "notany": "Not Any",
+    "nonpossession": "Non-Possession",
+    "with-all": "With All"
+  },
+  "position": "Position"
 }

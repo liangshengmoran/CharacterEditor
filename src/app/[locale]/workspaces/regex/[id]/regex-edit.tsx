@@ -1,6 +1,7 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
@@ -10,6 +11,7 @@ import { RegexScriptsTable, db } from '@/db/schema';
 import {
   updateFind_Regex,
   updateIsEnable,
+  updateRegexItem,
   updateReplaceString,
   updateScript_Name,
 } from '@/lib/regex';
@@ -51,36 +53,137 @@ export default function RegexEdit() {
 function Profile() {
   const t = useTranslations();
   const [regex, setRegex] = useAtom(regexAtom);
-  const handleChangeScriptName = async (value: string) => {
-    if (!regex) return;
-    updateScript_Name(regex.id, value);
-  };
-  const handleSwitch = async () => {
-    if (!regex) return;
-    updateIsEnable(regex.id);
-  };
+
   return (
     <>
       {regex ? (
         <div className="grid grid-cols-1 gap-y-4">
-          <div className="flex items-center gap-x-2">
-            <Label>{t('Regex.switch')}</Label>
-            <Switch onClick={handleSwitch} checked={!regex.disabled} />
-          </div>
-          <div>
-            <Label>{t('Regex.script_name')}</Label>
-            <Input
-              value={regex.scriptName}
-              onChange={(e) => handleChangeScriptName(e.target.value)}
-            />
-          </div>
-          <div></div>
+          <ScriptSwitch />
+          <ScriptName />
+          <MinDepth />
+          <MaxDepth />
+          <RunOnEdit />
+          <SubstituteRegex />
+          <MarkdownOnly />
+          <PromptOnly />
         </div>
       ) : (
         <div></div>
       )}
     </>
   );
+}
+
+function ScriptSwitch() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const handleSwitch = async () => {
+    if (!regex) return;
+    updateIsEnable(regex.id);
+  };
+  return (
+    <>
+      <Label>{t('Regex.switch')}</Label>
+      <Switch onClick={handleSwitch} checked={!regex?.disabled} />
+    </>
+  );
+}
+
+function ScriptName() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const handleChangeScriptName = async (value: string) => {
+    if (!regex) return;
+    updateScript_Name(regex.id, value);
+  };
+  return (
+    <>
+      <Label>{t('Regex.script_name')}</Label>
+      <Input value={regex?.scriptName} onChange={(e) => handleChangeScriptName(e.target.value)} />
+    </>
+  );
+}
+
+function MinDepth() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdateItem = (value: string) => {
+    updateRegexItem(Number(parmas.id), 'minDepth', Number(value));
+  };
+  return (
+    <div className="max-w-[80px]">
+      <Label>{t('Regex.minDepth')}</Label>
+      <Input
+        onChange={(e) => handleUpdateItem(e.target.value)}
+        value={regex?.minDepth || 0}
+        min={0}
+        max={1000}
+        step={1}
+      />
+    </div>
+  );
+}
+
+function MaxDepth() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdateItem = (value: string) => {
+    updateRegexItem(Number(parmas.id), 'maxDepth', Number(value));
+  };
+  return (
+    <div className="max-w-[80px]">
+      <Label>{t('Regex.maxDepth')}</Label>
+      <Input
+        onChange={(e) => handleUpdateItem(e.target.value)}
+        value={regex?.maxDepth}
+        min={0}
+        max={1000}
+        step={1}
+      />
+    </div>
+  );
+}
+
+function RunOnEdit() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdate = (value: boolean) => {
+    updateRegexItem(Number(parmas.id), 'placement', value);
+  };
+  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.runOnEdit)} />;
+}
+
+function SubstituteRegex() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdate = (value: boolean) => {
+    updateRegexItem(Number(parmas.id), 'substituteRegex', value);
+  };
+  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.substituteRegex)} />;
+}
+
+function MarkdownOnly() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdate = (value: boolean) => {
+    updateRegexItem(Number(parmas.id), 'markdownOnly', value);
+  };
+  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.markdownOnly)} />;
+}
+
+function PromptOnly() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdate = (value: boolean) => {
+    updateRegexItem(Number(parmas.id), 'promptOnly', value);
+  };
+  return <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.promptOnly)} />;
 }
 
 function RegexEditor() {

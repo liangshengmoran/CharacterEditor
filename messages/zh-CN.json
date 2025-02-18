@@ -60,7 +60,9 @@
     "replace_with": "转换为",
     "playground": "尝试一下",
     "script_name": "脚本名称",
-    "switch": "开关"
+    "switch": "开关",
+    "maxDepth": "最大深度",
+    "minDepth": "最小深度"
   },
   "ok": "确认",
   "Nav": {
@@ -114,7 +116,14 @@
   },
   "Worldbook": {
     "stratgy": "状态",
-    "depth": "深度"
+    "depth": "深度",
+    "order": "顺序",
+    "probability": "概率",
+    "selectiveLogic": "第二关键词逻辑",
+    "anywherewith": "与任意",
+    "notany": "非所有",
+    "nonpossession": "非任意",
+    "with-all": "与所有"
   },
   "position": "位置"
 }

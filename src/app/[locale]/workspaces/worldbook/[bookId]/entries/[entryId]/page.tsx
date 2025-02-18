@@ -100,11 +100,14 @@ function Profile() {
       <div className="grid w-full items-center gap-x-2 gap-y-3">
         <div className="flex flex-cols gap-x-2">
           <Comment />
+          <Stratgy />
           <Position />
           <Depth />
-          <Stratgy />
+          <Order />
+          <Probability />
         </div>
         <EntryKeys field="keys" />
+        <SelectiveLogic />
         <EntryKeys field="secondary_keys" />
       </div>
     </>
@@ -329,7 +332,7 @@ function Position() {
       <Label>{t('position')}</Label>
       <Select
         onValueChange={(value) => handleUpdate(value)}
-        defaultValue={String(entries?.extensions.position)}
+        value={String(entries?.extensions.position)}
       >
         <SelectTrigger>
           <SelectValue placeholder="Position" />
@@ -355,7 +358,12 @@ function Depth() {
   const params = useParams();
   const [entries] = useAtom(entriesAtom);
   const handleUpdate = (value: number) => {
-    updateBookEntryItem(Number(params.bookId), Number(params.entryId), 'extensions.depth', value);
+    updateBookEntryItem(
+      Number(params.bookId),
+      Number(params.entryId),
+      'extensions.depth',
+      Number(value),
+    );
   };
   return (
     <>
@@ -371,6 +379,7 @@ function Depth() {
             type="number"
             min={0}
             max={999}
+            step={1}
           />
         </div>
       ) : (
@@ -379,6 +388,95 @@ function Depth() {
           <Input value={entries?.extensions.depth} disabled />
         </div>
       )}
+    </>
+  );
+}
+
+function Order() {
+  const t = useTranslations();
+  const params = useParams();
+  const [entries] = useAtom(entriesAtom);
+  const handleUpdate = (value: number) => {
+    updateBookEntryItem(
+      Number(params.bookId),
+      Number(params.entryId),
+      'insertion_order',
+      Number(value),
+    );
+  };
+  return (
+    <>
+      <div className="w-[80px]">
+        <Label>{t('Worldbook.order')}</Label>
+        <Input
+          min={0}
+          max={1000}
+          step={1}
+          value={entries?.insertion_order}
+          onChange={(e) => handleUpdate(Number(e.target.value))}
+        />
+      </div>
+    </>
+  );
+}
+
+function Probability() {
+  const t = useTranslations();
+  const params = useParams();
+  const [entries] = useAtom(entriesAtom);
+  const handleUpdate = (value: number) => {
+    updateBookEntryItem(
+      Number(params.bookId),
+      Number(params.entryId),
+      'extensions.probability',
+      Number(value),
+    );
+  };
+  return (
+    <>
+      <div className="w-[80px]">
+        <Label>{t('Worldbook.probability')}</Label>
+        <Input
+          min={0}
+          max={1000}
+          step={1}
+          value={entries?.extensions.probability}
+          onChange={(e) => handleUpdate(Number(e.target.value))}
+        />
+      </div>
+    </>
+  );
+}
+
+function SelectiveLogic() {
+  const t = useTranslations();
+  const params = useParams();
+  const [entries] = useAtom(entriesAtom);
+  const handleUpdate = (value: string) => {
+    updateBookEntryItem(
+      Number(params.bookId),
+      Number(params.entryId),
+      'extensions.selectiveLogic',
+      Number(value),
+    );
+  };
+  return (
+    <>
+      <Label>{t('Worldbook.selectiveLogic')}</Label>
+      <Select
+        onValueChange={(value) => handleUpdate(value)}
+        value={String(entries?.extensions.selectiveLogic)}
+      >
+        <SelectTrigger className="w-[180px]">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="0">{t('Worldbook.anywherewith')}</SelectItem>
+          <SelectItem value="1">{t('Worldbook.notany')}</SelectItem>
+          <SelectItem value="2">{t('Worldbook.nonpossession')}</SelectItem>
+          <SelectItem value="3">{t('Worldbook.with-all')}</SelectItem>
+        </SelectContent>
+      </Select>
     </>
   );
 }

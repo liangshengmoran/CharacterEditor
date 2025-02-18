@@ -305,7 +305,7 @@ function DeleteCharacterModal({
   const handleDeleteCharacter = async () => {
     deleteCharacter(cid);
     setIsOpen(false);
-    toast.error('delete it ');
+    toast.error(t('dis'));
   };
   return (
     <AlertDialog open={isopen}>
@@ -354,7 +354,7 @@ function AddCharacterModal() {
   const handleAddCharacter = () => {
     addCharacter(name, cover);
     setIsModalShow(false);
-    toast.success('Add it' + name);
+    toast.success(t('ais') + name);
     setName('');
   };
   return (

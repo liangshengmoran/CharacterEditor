@@ -1,8 +1,8 @@
 import Dexie, { EntityTable } from 'dexie';
 
 interface CharacterTable {
-  id: number
-  cover:string 
+  id: number;
+  cover: string;
   name: string;
   description: string;
   personality: string;
@@ -52,52 +52,51 @@ interface CharacterBookTable {
     secondary_keys?: Array<string>;
     constant?: boolean;
     position?: string;
-    vectorized?:boolean;
+    vectorized?: boolean;
   }>;
 }
 
 interface RegexScriptsTable {
-  id:number,
-  uuid:string,
-  scriptName:string,
-  findRegex:string,
-  replaceString:string,
-  trimStrings:Array<string>
-  placement:Array<number>
-  disabled:boolean,
-  markdownOnly:boolean,
-  promptOnly:boolean,
-  runOnEdit:boolean,
-  substituteRegex:boolean,
-  minDepth:number | null,
-  maxDepth:number | null,
+  id: number;
+  uuid: string;
+  scriptName: string;
+  findRegex: string;
+  replaceString: string;
+  trimStrings: Array<string>;
+  placement: Array<number>;
+  disabled: boolean;
+  markdownOnly: boolean;
+  promptOnly: boolean;
+  runOnEdit: boolean;
+  substituteRegex: boolean;
+  minDepth: number;
+  maxDepth: number;
 }
 
 interface GalleryTable {
-  id:number,
-  uuid:string,
-  name:string,
-  content:Array<{
-    uuid:string,
-    name:string
-    url:string
-  }>
+  id: number;
+  uuid: string;
+  name: string;
+  content: Array<{
+    uuid: string;
+    name: string;
+    url: string;
+  }>;
 }
 
-const db = new Dexie("OoC-CharacterEditor") as Dexie & {
-  character: EntityTable<CharacterTable, "id">;
-  characterBook: EntityTable<CharacterBookTable, "id">;
-  regexScripts: EntityTable<RegexScriptsTable,"id">
-  gallery: EntityTable<GalleryTable,"id">
+const db = new Dexie('OoC-CharacterEditor') as Dexie & {
+  character: EntityTable<CharacterTable, 'id'>;
+  characterBook: EntityTable<CharacterBookTable, 'id'>;
+  regexScripts: EntityTable<RegexScriptsTable, 'id'>;
+  gallery: EntityTable<GalleryTable, 'id'>;
 };
 
 db.version(1).stores({
-  character:"++id",
-  characterBook:"++id",
-  regexScripts:"++id",
-  gallery:"++id"
+  character: '++id',
+  characterBook: '++id',
+  regexScripts: '++id',
+  gallery: '++id',
 });
 
 export { db };
 export type { CharacterBookTable, CharacterTable, RegexScriptsTable };
-
