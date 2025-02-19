@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "AI Character Card Editor | OoC Moe",
-    "description": "Edit AI character cards online, supporting Sillytavern"
+    "description": "Online editing of AI character cards, supports TavernAI/SillyTavern"
   },
   "hero": "AI Character Card Editor | OoC Moe",
   "character_editor": "AI Character Card Editor",
@@ -20,7 +20,7 @@
   "visit": "Visit",
   "contact": "Contact",
   "ays": "Are you sure?",
-  "nrb": "Once you decide, there's no going back",
+  "nrb": "Once you make a decision, there's no going back",
   "serial": "Serial Number",
   "name": "Name",
   "profile": "Profile",
@@ -32,17 +32,17 @@
   "action": "Action",
   "beta": "Beta",
   "selectCID": "Please select and edit a character first",
-  "selectWID": "Please select and edit a worldbook entry first",
+  "selectWID": "Please select and edit a worldbook first",
   "success": "Success",
   "Character": {
     "change_cover": "Change Cover",
-    "details": "Character Card Information",
+    "details": "Character Card Details",
     "alternate_grettings": "Alternate Greetings",
     "creator_notes": "Creator Notes",
     "description": "Character Core Description",
-    "first_mes": "Opening Message",
-    "mes_example": "Character Message Example",
-    "personality": "Character Personality",
+    "first_mes": "First Message",
+    "mes_example": "Message Example",
+    "personality": "Personality",
     "post_history_instructions": "Post History Instructions",
     "scenario": "Interaction Background",
     "system_prompt": "Override System Prompt",
@@ -61,8 +61,16 @@
     "playground": "Try it out",
     "script_name": "Script Name",
     "switch": "Switch",
-    "maxDepth": "Maximum Depth",
-    "minDepth": "Minimum Depth"
+    "maxDepth": "Max Depth",
+    "minDepth": "Min Depth",
+    "substituteRegex": "Substitute Regular Expression",
+    "markdownOnly": "Format Display Only",
+    "promptOnly": "Format Prompt Only",
+    "runOnEdit": "Run on Edit",
+    "user-input": "User Input",
+    "ai-output": "AI Output",
+    "shortcut-command": "Shortcut Command",
+    "world-information": "Worldbook Information"
   },
   "ok": "OK",
   "Nav": {
@@ -72,7 +80,7 @@
     "character": "Character Card",
     "characterItem": "Character Card Item",
     "description": "Character Core Description",
-    "first_mes": "Opening Message",
+    "first_mes": "First Message",
     "alternate_greetings": "Alternate Greetings",
     "mes_example": "Message Example",
     "personality": "Personality",
@@ -96,7 +104,7 @@
   "status": "Service Status",
   "advanced": "Advanced Options",
   "importGallery": "This action will overwrite data",
-  "input keyword and image": "Please enter a keyword and image",
+  "input keyword and image": "Please enter keyword and image",
   "select image": "Select Image",
   "keyword": "Keyword",
   "gallery_list": "Gallery List",
@@ -121,8 +129,8 @@
     "probability": "Probability",
     "selectiveLogic": "Secondary Keyword Logic",
     "anywherewith": "With Any",
-    "notany": "Not Any",
-    "nonpossession": "Non-Possession",
+    "notany": "Not All",
+    "nonpossession": "Not Any",
     "with-all": "With All"
   },
   "position": "Position"

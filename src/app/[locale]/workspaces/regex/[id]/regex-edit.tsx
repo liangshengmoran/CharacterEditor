@@ -16,6 +16,7 @@ import {
   updateScript_Name,
 } from '@/lib/regex';
 import { useLiveQuery } from 'dexie-react-hooks';
+import { pull } from 'es-toolkit';
 import { atom, useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
@@ -60,6 +61,8 @@ function Profile() {
         <div className="grid grid-cols-1 gap-y-4">
           <ScriptSwitch />
           <ScriptName />
+
+          <Placement />
           <MinDepth />
           <MaxDepth />
           <RunOnEdit />
@@ -104,6 +107,36 @@ function ScriptName() {
   );
 }
 
+function Placement() {
+  const t = useTranslations();
+  const [regex, setRegex] = useAtom(regexAtom);
+  const parmas = useParams();
+  const handleUpdate = (value: number) => {
+    const placement = regex?.placement || [];
+    if (placement.includes(value)) {
+      pull(placement, [value]);
+      updateRegexItem(Number(parmas.id), 'placement', placement);
+    } else {
+      placement.push(value);
+      updateRegexItem(Number(parmas.id), 'placement', placement);
+    }
+  };
+  return (
+    <>
+      <div className="flex items-center gap-x-4">
+        <Checkbox onCheckedChange={() => handleUpdate(1)} checked={regex?.placement.includes(1)} />
+        <Label>{t('Regex.user-input')}</Label>
+        <Checkbox onCheckedChange={() => handleUpdate(2)} checked={regex?.placement.includes(2)} />
+        <Label>{t('Regex.ai-output')}</Label>
+        <Checkbox onCheckedChange={() => handleUpdate(3)} checked={regex?.placement.includes(3)} />
+        <Label>{t('Regex.shortcut-command')}</Label>
+        <Checkbox onCheckedChange={() => handleUpdate(5)} checked={regex?.placement.includes(5)} />
+        <Label>{t('Regex.world-information')}</Label>
+      </div>
+    </>
+  );
+}
+
 function MinDepth() {
   const t = useTranslations();
   const [regex, setRegex] = useAtom(regexAtom);
@@ -116,7 +149,7 @@ function MinDepth() {
       <Label>{t('Regex.minDepth')}</Label>
       <Input
         onChange={(e) => handleUpdateItem(e.target.value)}
-        value={regex?.minDepth || 0}
+        value={regex?.minDepth}
         min={0}
         max={1000}
         step={1}
@@ -154,9 +187,9 @@ function RunOnEdit() {
     updateRegexItem(Number(parmas.id), 'placement', value);
   };
   return (
-    <div>
+    <div className="flex items-center gap-x-4">
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.runOnEdit)} />
       <Label>{t('Regex.runOnEdit')}</Label>
-      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.runOnEdit)} />;
     </div>
   );
 }
@@ -169,9 +202,9 @@ function SubstituteRegex() {
     updateRegexItem(Number(parmas.id), 'substituteRegex', value);
   };
   return (
-    <div>
+    <div className="flex items-center gap-x-4">
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.substituteRegex)} />
       <Label>{t('Regex.substituteRegex')}</Label>
-      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.substituteRegex)} />;
     </div>
   );
 }
@@ -184,9 +217,9 @@ function MarkdownOnly() {
     updateRegexItem(Number(parmas.id), 'markdownOnly', value);
   };
   return (
-    <div>
+    <div className="flex items-center gap-x-4">
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.markdownOnly)} />
       <Label>{t('Regex.markdownOnly')}</Label>
-      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.markdownOnly)} />;
     </div>
   );
 }
@@ -199,9 +232,9 @@ function PromptOnly() {
     updateRegexItem(Number(parmas.id), 'promptOnly', value);
   };
   return (
-    <div>
+    <div className="flex items-center gap-x-4">
+      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.promptOnly)} />
       <Label>{t('Regex.promptOnly')}</Label>
-      <Checkbox onCheckedChange={() => handleUpdate} value={Number(regex?.promptOnly)} />;
     </div>
   );
 }

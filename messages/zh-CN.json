@@ -65,7 +65,12 @@
     "minDepth": "最小深度",
     "substituteRegex": "替换正则表达式",
     "markdownOnly": "仅格式化显示",
-    "promptOnly": "仅格式化提示词"
+    "promptOnly": "仅格式化提示词",
+    "runOnEdit": "编辑时运行",
+    "user-input": "用户输入",
+    "ai-output": "AI 输出",
+    "shortcut-command": "快捷命令",
+    "world-information": "世界书信息"
   },
   "ok": "确认",
   "Nav": {

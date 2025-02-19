@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "AI キャラクターカードエディター | OoC萌",
-    "description": "オンラインでAIキャラクターカードを編集。酒場 (Sillytavern) に対応。"
+    "description": "オンラインでAIキャラクターカードを編集。Sillytavern酒場に対応"
   },
   "hero": "AI キャラクターカードエディター | OoC萌",
   "character_editor": "AI キャラクターカードエディター",
@@ -9,7 +9,7 @@
   "delete": "削除",
   "character": "キャラクターカード",
   "worldbook": "ワールドブック",
-  "about": "アバウト",
+  "about": "关于",
   "regex_scripts": "正規表現スクリプト",
   "exhibit": "展示",
   "settings": "設定",
@@ -17,10 +17,10 @@
   "import": "インポート",
   "export": "エクスポート",
   "edit": "編集",
-  "visit": "訪問",
-  "contact": "お問い合わせ",
-  "ays": "本当に良いですか？",
-  "nrb": "決定したら元には戻せません",
+  "visit": "访问",
+  "contact": "联系",
+  "ays": "本当によろしいですか？",
+  "nrb": "決定したら二度と戻れません",
   "serial": "シリアル番号",
   "name": "名前",
   "profile": "プロフィール",
@@ -41,19 +41,19 @@
     "creator_notes": "使用説明",
     "description": "キャラクターコア記述",
     "first_mes": "第一印象",
-    "mes_example": "メッセージ例",
+    "mes_example": "キャラクターメッセージ例",
     "personality": "キャラクター個性",
-    "post_history_instructions": "履歴コマンド",
+    "post_history_instructions": "后续历史指令",
     "scenario": "インタラクション背景",
     "system_prompt": "システムプロンプトを上書き",
     "tags": "埋め込みタグ"
   },
   "WorldBook": {
     "keys": "トリガーキーワード",
-    "secondary_keys": "セカンダリキーワード",
-    "keys_placeholder": "キーワード1,キーワード2,キーワード3...",
+    "secondary_keys": "第2キーワード",
+    "keys_placeholder": "キーワード1、キーワード2、キーワード3...",
     "second_keys": "二次トリガーキーワード",
-    "comment": "項目名"
+    "comment": "エントリ名"
   },
   "Regex": {
     "find_regex": "正規表現マッチ",
@@ -62,11 +62,19 @@
     "script_name": "スクリプト名",
     "switch": "スイッチ",
     "maxDepth": "最大深度",
-    "minDepth": "最小深度"
+    "minDepth": "最小深度",
+    "substituteRegex": "置換正規表現",
+    "markdownOnly": "マークダウンのみ表示",
+    "promptOnly": "プロンプトのみ表示",
+    "runOnEdit": "編集時に実行",
+    "user-input": "ユーザー入力",
+    "ai-output": "AI出力",
+    "shortcut-command": "ショートカットコマンド",
+    "world-information": "世界书信息"
   },
-  "ok": "OK",
+  "ok": "確認",
   "Nav": {
-    "exhibit": "展示宝庫",
+    "exhibit": "展示宝库",
     "worldbook": "ワールドブック",
     "regex-scripts": "正規表現スクリプト",
     "character": "キャラクターカード",
@@ -79,13 +87,13 @@
     "scenario": "シナリオ",
     "creator_notes": "クリエイターノート",
     "system_prompt": "システムプロンプト",
-    "post_history_instructions": "履歴コマンド",
+    "post_history_instructions": "历史指令",
     "tags": "タグ",
-    "entries": "項目",
+    "entries": "エントリ",
     "settings": "設定",
     "CatboxGallery": "CatBoxギャラリー",
     "oocmoe": "OoC萌",
-    "about": "アバウト"
+    "about": "关于"
   },
   "theme": "テーマ",
   "language": "言語",
@@ -101,8 +109,8 @@
   "keyword": "キーワード",
   "gallery_list": "ギャラリーリスト",
   "faq": "よくある質問",
-  "select greetings": "オープニングを選択",
-  "type messages": "内容を入力してください",
+  "select greetings": "挨拶を選択",
+  "type messages": "内容を入力",
   "switch": "スイッチ",
   "main": "メイン",
   "other": "その他",
@@ -119,11 +127,11 @@
     "depth": "深度",
     "order": "順序",
     "probability": "確率",
-    "selectiveLogic": "セカンダリキーワードロジック",
+    "selectiveLogic": "第2キーワードロジック",
     "anywherewith": "任意",
-    "notany": "非すべて",
-    "nonpossession": "非任意",
-    "with-all": "すべて"
+    "notany": "非任意",
+    "nonpossession": "非所有",
+    "with-all": "所有"
   },
   "position": "位置"
 }

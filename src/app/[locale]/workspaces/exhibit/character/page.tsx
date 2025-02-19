@@ -26,10 +26,11 @@ import {
   deleteCharacter,
   getAllCharacterLists,
   importCharacter,
+  importCharacters,
 } from '@/lib/character';
 import { selectedCharacterIdAtom } from '@/store/action';
 import { atom, useAtom } from 'jotai';
-import { EllipsisVerticalIcon, ImportIcon, PlusIcon } from 'lucide-react';
+import { EllipsisVerticalIcon, FileStackIcon, ImportIcon, PlusIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
@@ -39,6 +40,7 @@ export const runtime = 'edge';
 
 const addCharacterModalAtom = atom(false);
 const characterCoverModalAtom = atom(false);
+const importCharacterModalAtom = atom(false);
 
 function page() {
   return (
@@ -49,6 +51,7 @@ function page() {
       </div>
       <AddCharacterModal />
       <ChangeCoverModal />
+      <ImportCharacterModal />
     </>
   );
 }
@@ -58,6 +61,7 @@ export default page;
 function Header() {
   const t = useTranslations();
   const [, setIsAddCharacterModalShow] = useAtom(addCharacterModalAtom);
+  const [, setIsImportCharacterModalShow] = useAtom(importCharacterModalAtom);
   return (
     <div className="sticky flex items-center justify-between">
       <div className="font-bold">{t('character')}</div>
@@ -65,11 +69,35 @@ function Header() {
         <Button variant="outline" size="icon" onClick={() => setIsAddCharacterModalShow(true)}>
           <PlusIcon />
         </Button>
+        <Button variant="outline" size="icon" onClick={importCharacters}>
+          <FileStackIcon />
+        </Button>
         <Button variant="outline" size="icon" onClick={importCharacter}>
           <ImportIcon />
         </Button>
       </div>
     </div>
+  );
+}
+
+function ImportCharacterModal() {
+  const t = useTranslations();
+  const [isOpen, setIsOpen] = useAtom(importCharacterModalAtom);
+  return (
+    <>
+      <AlertDialog open={isOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t('import')}</AlertDialogTitle>
+            <AlertDialogDescription></AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => setIsOpen(false)}>{t('cancel')}</AlertDialogCancel>
+            <AlertDialogAction>{t('import')}</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 }
 
