@@ -31,7 +31,7 @@ import { useRouter } from '@/i18n/routing';
 import {
   addCharacterBookEntries,
   deleteCharacterBookEntries,
-  updateCharacterBookEntriesEnable,
+  updateBookEntryItem
 } from '@/lib/worldbook';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { EllipsisVerticalIcon, PlusIcon } from 'lucide-react';
@@ -125,7 +125,6 @@ function EntrieLists() {
                         <DropdownMenuItem onClick={() => handleEditEntries(index)}>
                           {t('edit')}
                         </DropdownMenuItem>
-                        <DropdownMenuItem>{t('export')}</DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => handleDeleteCharacterBookEntrie(index)}
                           className="text-red-600 focus:text-red-600"
@@ -198,8 +197,12 @@ function EntriesEnableSwitch({
 }) {
   const params = useParams();
   const bookId = Number(params.bookId);
-  const handleChange = async () => {
-    await updateCharacterBookEntriesEnable(entryIndex, bookId);
+  const handleUpdate = async () => {
+    if(isEnabled === true){
+      await updateBookEntryItem(bookId,entryIndex,'enabled',false)
+    }else{
+      await updateBookEntryItem(bookId,entryIndex,'enabled',true)
+    }
   };
-  return <Switch checked={isEnabled} onClick={handleChange} />;
+  return <Switch checked={isEnabled} onClick={handleUpdate} />;
 }

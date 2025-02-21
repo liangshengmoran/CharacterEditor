@@ -1,5 +1,6 @@
 import { db } from '@/db/schema';
 import { useLiveQuery } from 'dexie-react-hooks';
+import saveAs from 'file-saver';
 import { toast } from 'sonner';
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
@@ -157,6 +158,33 @@ export async function updateRegexItem(regexId: number, field: string, value: any
     const rows = await db.regexScripts.update(regexId, {
       [`${field}` as any]: value,
     });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function exportRegex(regexId: number) {
+  try {
+    const rows = await db.regexScripts.get(regexId);
+    if (!rows) return;
+    const regex = {
+      id: rows.uuid,
+      findRegex: rows.findRegex,
+      replaceString: rows.replaceString,
+      trimStrings: rows.trimStrings,
+      placement: rows.placement,
+      disabled: rows.disabled,
+      markdownOnly: rows.markdownOnly,
+      promptOnly: rows.promptOnly,
+      runOnEdit: rows.runOnEdit,
+      substituteRegex: rows.substituteRegex,
+      minDepth: rows.minDepth,
+      maxDepth: rows.maxDepth
+    };
+    const jsonString = JSON.stringify(regex, null, 2);
+    const blob = new Blob([jsonString], { type: 'application/json' });
+    const fileName = rows.scriptName ? `${rows.scriptName}.json` : 'regex.json';
+    saveAs(blob, fileName);
   } catch (e) {
     console.log(e);
   }

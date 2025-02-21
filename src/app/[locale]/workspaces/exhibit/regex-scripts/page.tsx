@@ -30,6 +30,7 @@ import { useRouter } from '@/i18n/routing';
 import {
   addRegexScript,
   deleteRegexxScript,
+  exportRegex,
   getAllRegexScriptLists,
   importRegex,
 } from '@/lib/regex';
@@ -104,6 +105,9 @@ function RegexList() {
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={() => router.push(`/workspaces/regex/${list.id}`)}>
                     {t('edit')}
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => exportRegex(list.id)}>
+                    {t('export')}
                   </DropdownMenuItem>
                   <DropdownMenuItem
                     className="text-red-600 focus:text-red-500"
