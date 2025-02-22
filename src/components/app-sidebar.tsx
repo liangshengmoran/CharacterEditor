@@ -2,7 +2,7 @@
 
 import {
   AmphoraIcon,
-  CogIcon, IdCardIcon, InfoIcon,
+  CogIcon, FileJsonIcon, IdCardIcon, InfoIcon,
   PawPrintIcon, Pyramid
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -95,6 +95,11 @@ const data = {
       name: "CatboxGallery",
       url: "/workspaces/tools/catbox",
       icon: PawPrintIcon,
+    },
+    {
+      name: "convertCharacterToJson",
+      url: "/workspaces/tools/convert",
+      icon: FileJsonIcon,
     },
     {
       name: "oocmoe",

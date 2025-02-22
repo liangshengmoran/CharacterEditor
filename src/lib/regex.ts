@@ -17,8 +17,8 @@ const regexScriptsTableSchema = z.object({
   promptOnly: z.boolean(),
   runOnEdit: z.boolean(),
   substituteRegex: z.boolean(),
-  minDepth: z.number(),
-  maxDepth: z.number(),
+  minDepth: z.union([z.number(), z.null()]),
+  maxDepth: z.union([z.number(), z.null()]), 
 });
 
 export function getAllRegexScriptLists() {
@@ -88,6 +88,8 @@ export async function importRegex() {
       const regex = {
         ...rest,
         uuid: id,
+        minDepth: rest.minDepth,
+        maxDepth: rest.maxDepth,
       };
       await db.regexScripts.add(regex);
       toast.success('Add Regex:' + regex.scriptName);

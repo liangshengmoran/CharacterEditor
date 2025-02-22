@@ -69,8 +69,8 @@ interface RegexScriptsTable {
   promptOnly: boolean;
   runOnEdit: boolean;
   substituteRegex: boolean;
-  minDepth: number;
-  maxDepth: number;
+  minDepth: number | null
+  maxDepth: number | null
 }
 
 interface GalleryTable {
@@ -100,3 +100,4 @@ db.version(1).stores({
 
 export { db };
 export type { CharacterBookTable, CharacterTable, RegexScriptsTable };
+

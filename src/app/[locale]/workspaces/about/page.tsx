@@ -18,15 +18,15 @@ function page() {
       </div>
       <div>
         Github:{' '}
-        <Link href="https://github,com/ooc-moe/character-editor" target="_blank">
-          https://github.com/ooc-moe/character-editor
+        <Link href="https://github.com/oocmoe/CharacterEditor" target="_blank">
+          https://github.com/oocmoe/CharacterEditor
         </Link>
       </div>
       <div>{t('contact')}: contact@ooc.moe</div>
       <div>
         {t('faq')}:
-        <Link href="https://github.com/ooc-moe/CharacterEditor/discussions" target="_blank">
-          https://github.com/ooc-moe/CharacterEditor/discussions
+        <Link href="https://github.com/oocmoe/CharacterEditor/discussions" target="_blank">
+          https://github.com/oocmoe/CharacterEditor/discussions
         </Link>
       </div>
     </div>

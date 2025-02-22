@@ -93,7 +93,8 @@
     "settings": "Settings",
     "CatboxGallery": "CatBox Gallery",
     "oocmoe": "OoC Moe",
-    "about": "About"
+    "about": "About",
+    "convertCharacterToJson": "Convert Character to json"
   },
   "theme": "Theme",
   "language": "Language",
@@ -133,5 +134,9 @@
     "nonpossession": "Not Any",
     "with-all": "With All"
   },
-  "position": "Position"
+  "position": "Position",
+  "convertCharacterToJson": "Convert Character to json",
+  "Success": {
+    "copySuccess": "Copy Success"
+  }
 }

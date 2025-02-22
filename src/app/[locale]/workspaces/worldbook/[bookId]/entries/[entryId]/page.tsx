@@ -98,14 +98,12 @@ function Profile() {
   return (
     <>
       <div className="grid w-full items-center gap-x-2 gap-y-3">
-        <div className="flex flex-cols gap-x-2">
-          <Comment />
-          <Stratgy />
-          <Position />
-          <Depth />
-          <Order />
-          <Probability />
-        </div>
+        <Comment />
+        <Stratgy />
+        <Position />
+        <Depth />
+        <Order />
+        <Probability />
         <EntryKeys field="keys" />
         <SelectiveLogic />
         <EntryKeys field="secondary_keys" />

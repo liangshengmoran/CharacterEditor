@@ -26,6 +26,7 @@ const navlists = [
   { name: 'settings', path: 'settings', icon: CogIcon },
   { name: 'regex_scripts', path: 'exhibit/regex-scripts/', icon: RegexIcon },
   { name: 'Nav.CatboxGallery', path: 'tools/catbox', icon: PawPrintIcon },
+  { name: 'Nav.convertCharacterToJson', path: 'tools/convert', icon: PawPrintIcon },
   { name: 'about', path: 'about', icon: InfoIcon },
 ];
 

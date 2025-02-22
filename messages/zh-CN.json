@@ -93,7 +93,8 @@
     "settings": "设置",
     "CatboxGallery": "CatBox画廊库",
     "oocmoe": "OoC萌",
-    "about": "关于"
+    "about": "关于",
+    "convertCharacterToJson": "转换角色卡到Json"
   },
   "theme": "主题",
   "language": "语言",
@@ -133,5 +134,8 @@
     "nonpossession": "非任意",
     "with-all": "与所有"
   },
-  "position": "位置"
+  "position": "位置",
+  "Success": {
+    "copySuccess": "复制成功"
+  }
 }

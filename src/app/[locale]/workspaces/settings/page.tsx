@@ -53,6 +53,16 @@ function LanguageSelect() {
   );
 }
 
+function ConvertCharacterToJson() {
+  const t = useTranslations();
+  return (
+    <div className="flex w-full justify-between">
+      <div>{t('convertCharacterToJson')}</div>
+      <LanguageToggle />
+    </div>
+  );
+}
+
 // function ExportData() {
 //   const t = useTranslations()
 //   return (

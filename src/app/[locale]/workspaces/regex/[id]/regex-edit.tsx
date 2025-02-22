@@ -123,13 +123,19 @@ function Placement() {
   };
   return (
     <>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-4">
         <Checkbox onCheckedChange={() => handleUpdate(1)} checked={regex?.placement.includes(1)} />
         <Label>{t('Regex.user-input')}</Label>
+      </div>
+      <div className="flex items-center gap-4">
         <Checkbox onCheckedChange={() => handleUpdate(2)} checked={regex?.placement.includes(2)} />
         <Label>{t('Regex.ai-output')}</Label>
+      </div>
+      <div className="flex items-center gap-4">
         <Checkbox onCheckedChange={() => handleUpdate(3)} checked={regex?.placement.includes(3)} />
         <Label>{t('Regex.shortcut-command')}</Label>
+      </div>
+      <div className="flex items-center gap-4">
         <Checkbox onCheckedChange={() => handleUpdate(5)} checked={regex?.placement.includes(5)} />
         <Label>{t('Regex.world-information')}</Label>
       </div>
@@ -149,7 +155,7 @@ function MinDepth() {
       <Label>{t('Regex.minDepth')}</Label>
       <Input
         onChange={(e) => handleUpdateItem(e.target.value)}
-        value={regex?.minDepth}
+        value={regex?.minDepth || 0}
         min={0}
         max={1000}
         step={1}
@@ -170,7 +176,7 @@ function MaxDepth() {
       <Label>{t('Regex.maxDepth')}</Label>
       <Input
         onChange={(e) => handleUpdateItem(e.target.value)}
-        value={regex?.maxDepth}
+        value={regex?.minDepth || 0}
         min={0}
         max={1000}
         step={1}
