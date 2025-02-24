@@ -36,6 +36,7 @@ function Header() {
   };
 
   const handleImport = () => {
+    const t = useTranslations()
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.png';
@@ -54,7 +55,7 @@ function Header() {
         }
       } catch (error) {
         console.error('完整错误信息:', error);
-        toast.error(t('Error.conversionFailed'));
+        toast.error(t('!ERROR_UNKNOW'));
       }
     };
     input.click();
@@ -79,5 +80,5 @@ function Header() {
 
 function ConvertCharacterToJson() {
   const [preview, setPreview] = useAtom(previewAtom);
-  return <Textarea className="h-full w-full whitespace-pre font-mono text-sm" value={preview} />;
+  return <Textarea className="h-full w-full mt-2 whitespace-pre font-mono text-sm" value={preview} />;
 }

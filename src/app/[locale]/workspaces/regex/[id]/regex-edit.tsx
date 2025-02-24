@@ -61,7 +61,6 @@ function Profile() {
         <div className="grid grid-cols-1 gap-y-4">
           <ScriptSwitch />
           <ScriptName />
-
           <Placement />
           <MinDepth />
           <MaxDepth />

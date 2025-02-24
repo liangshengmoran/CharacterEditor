@@ -1,5 +1,3 @@
-import { CharacterTable, RegexScriptsTable, db } from '../db/schema';
-import { getCharacterBook } from './worldbook';
 import { useRouter } from '@/i18n/routing';
 import { selectedCharacterIdAtom } from '@/store/action';
 import { useLiveQuery } from 'dexie-react-hooks';
@@ -7,11 +5,14 @@ import { get, omit } from 'es-toolkit/compat';
 import { saveAs } from 'file-saver';
 import { useAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
-import text from 'png-chunk-text';
+import { default as text } from 'png-chunk-text';
+import { default as encode } from 'png-chunks-encode';
 import extract from 'png-chunks-extract';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 import { v7 as uuidv7 } from 'uuid';
+import { CharacterTable, RegexScriptsTable, db } from '../db/schema';
+import { getCharacterBook } from './worldbook';
 
 export function getAllCharacterLists() {
   const rows = useLiveQuery(() =>
@@ -400,7 +401,7 @@ export function importCharacter() {
             });
             const rows = db.regexScripts.bulkAdd(regex as RegexScriptsTable[]);
             if (!rows) return;
-            toast.success('Add it Regex', {
+            toast.success('Add it' + regex.scriptName, {
               id: 'IMPORT_CHARACTER_REGEX',
             });
           }
@@ -427,9 +428,6 @@ export async function copyCharacter(id: number) {
 }
 
 export async function exportCharacter(cid: number, worldbookId?: string, regexId?: string[]) {
-  const extract = require('png-chunks-extract');
-  const encode = require('png-chunks-encode');
-  const text = require('png-chunk-text');
   try {
     const c = await getCharacter(cid);
     if (!c) return;

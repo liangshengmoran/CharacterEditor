@@ -137,5 +137,6 @@
   "position": "位置",
   "Success": {
     "copySuccess": "复制成功"
-  }
+  },
+  "!ERROR_UNKNOW": "未知错误"
 }

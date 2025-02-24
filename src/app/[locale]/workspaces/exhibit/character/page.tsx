@@ -462,7 +462,7 @@ function ChangeCoverModal() {
                 alt="changeCover"
                 width={521}
                 height={521}
-                className="h-64 w-48"
+                className="w-auto"
               />
             </AlertDialogDescription>
           </AlertDialogHeader>

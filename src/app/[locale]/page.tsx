@@ -1,3 +1,6 @@
+'use client';
+
+import RotatingText from '@/components/bootstrapHero';
 import { ModeToggle } from '@/components/mode-toggle';
 import { Link } from '@/i18n/routing';
 import { ActivityIcon, Code, PenIcon } from 'lucide-react';
@@ -11,8 +14,44 @@ export default function Home() {
       <div className="flex flex-1 justify-end p-4">
         <ModeToggle />
       </div>
-
+      <RotatingText
+          texts={[
+            '亲爱的欢迎回来',
+            '親愛的歡迎回來',
+            'Darling, welcome back',
+            '親愛なる、お帰りなさい',
+            '친애하는, 환영합니다',
+            'Дорогой, добро пожаловать обратно',
+            'Cher, bienvenue de retour',
+            'Lieber, willkommen zurück',
+            'Querido, bienvenido de vuelta',
+            'Caro, bem-vindo de volta',
+            'Caro, bentornato',
+            'Beste, welkom terug',
+            'Kära, välkommen tillbaka',
+            'Kære, velkommen tilbage',
+            'Kjære, velkommen tilbake',
+            'Hyvä, tervetuloa takaisin',
+            'Szerető, üdv újra itt',
+            'Drogi, witaj z powrotem',
+            'Drahý, vitajte späť',
+            'Drahý, vítejte zpět',
+            'Dragi, dobrodošli nazad',
+            'Αγαπητέ, καλώς ήρθες πίσω',
+            'Dragi, dobrodošli nazaj',
+          ]}
+          mainClassName="px-2 sm:px-2 md:px-3 text-2xl overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+          staggerFrom={'last'}
+          initial={{ y: '100%' }}
+          animate={{ y: 0 }}
+          exit={{ y: '-120%' }}
+          staggerDuration={0.025}
+          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+          transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+          rotationInterval={5000}
+        />
       <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        
         <div className="grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <Link
             className="group flex size-full gap-y-6 rounded-lg p-5 hover:bg-yellow-50 focus:bg-yellow-50 focus:outline-none dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
@@ -61,7 +100,7 @@ export default function Home() {
           </Link>
           <Link
             className="group flex size-full gap-y-6 rounded-lg p-5 hover:bg-yellow-50 focus:bg-yellow-50 focus:outline-none dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
-            href="https://github.com/ooc-moe/CharacterEditor"
+            href="https://github.com/oocmoe/CharacterEditor"
             target="_blanks"
           >
             <svg
