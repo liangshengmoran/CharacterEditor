@@ -63,9 +63,9 @@ export default function page() {
 
 function Header() {
   const t = useTranslations();
-  const [newModal, setNewModal] = useAtom(newGalleryModalAtom);
-  const [exportModal, setExportModal] = useAtom(exportGalleryModalAtom);
-  const [importModal, setImportModal] = useAtom(importGalleryModalAtom);
+  const [, setNewModal] = useAtom(newGalleryModalAtom);
+  const [, setExportModal] = useAtom(exportGalleryModalAtom);
+  const [, setImportModal] = useAtom(importGalleryModalAtom);
   return (
     <div className="flex justify-between">
       <div className="font-bold">{t('gallery_list')}</div>
@@ -91,7 +91,6 @@ function ImportModal() {
   }
   const t = useTranslations();
   const params = useParams();
-  const [isShow, setIsShow] = useState(false);
   const [isOpen, setIsOpen] = useAtom(importGalleryModalAtom);
   const [input, setInput] = useState('');
   const [galleryLists, setGalleryLists] = useState<GalleryLists[]>([]);
@@ -100,13 +99,12 @@ function ImportModal() {
       const parsedData = input
         .split('\n')
         .map((line) => {
-          const regex = /^(.+?)_([a-zA-Z0-9]+)\.([a-zA-Z0-9]+)$/;
+          const regex = /^([\u4e00-\u9fa5A-Za-z0-9]+?)[_ ]?((?:[a-zA-Z0-9]+)(?:\.[a-zA-Z0-9]+)?)$/;
           const match = line.trim().match(regex);
-
           if (match) {
             const name = match[1];
-            const fileCode = match[2];
-            const fileUrl = `https://files.catbox.moe/${fileCode}.${match[3]}`;
+            const filePart = match[2];
+            const fileUrl = `https://files.catbox.moe/${filePart}`;
             return { name, url: fileUrl };
           }
           return null;
@@ -127,8 +125,8 @@ function ImportModal() {
     db.gallery.update(Number(params.id), {
       content: entry,
     });
-    setIsShow(false);
-    toast.success('Ok');
+    setIsOpen(false);
+    toast.success('Ok,没看见内容请检查格式');
   };
 
   return (
