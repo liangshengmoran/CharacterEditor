@@ -36,7 +36,6 @@ function Header() {
   };
 
   const handleImport = () => {
-    const t = useTranslations()
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = '.png';
@@ -55,7 +54,7 @@ function Header() {
         }
       } catch (error) {
         console.error('完整错误信息:', error);
-        toast.error(t('!ERROR_UNKNOW'));
+        toast.error("Unknow error");
       }
     };
     input.click();
