@@ -18,7 +18,7 @@ const regexScriptsTableSchema = z.object({
   runOnEdit: z.boolean(),
   substituteRegex: z.boolean(),
   minDepth: z.union([z.number(), z.null()]),
-  maxDepth: z.union([z.number(), z.null()]), 
+  maxDepth: z.union([z.number(), z.null()]),
 });
 
 export function getAllRegexScriptLists() {
@@ -181,7 +181,7 @@ export async function exportRegex(regexId: number) {
       runOnEdit: rows.runOnEdit,
       substituteRegex: rows.substituteRegex,
       minDepth: rows.minDepth,
-      maxDepth: rows.maxDepth
+      maxDepth: rows.maxDepth,
     };
     const jsonString = JSON.stringify(regex, null, 2);
     const blob = new Blob([jsonString], { type: 'application/json' });
@@ -189,5 +189,37 @@ export async function exportRegex(regexId: number) {
     saveAs(blob, fileName);
   } catch (e) {
     console.log(e);
+  }
+}
+
+export async function deleteDuplicateRegex() {
+  try {
+    const allRecords = await db.regexScripts.toArray();
+    const hashGroups = new Map();
+
+    allRecords.forEach((record) => {
+      const { id, uuid, ...restFields } = record;
+      const hashKey = JSON.stringify(restFields);
+
+      if (!hashGroups.has(hashKey)) {
+        hashGroups.set(hashKey, []);
+      }
+      hashGroups.get(hashKey).push(id);
+    });
+
+    const deletionIds = [];
+    for (const [key, ids] of hashGroups as any) {
+      if (ids.length > 1) {
+        const sortedIds = [...ids].sort((a, b) => a - b);
+        deletionIds.push(...sortedIds.slice(1));
+      }
+    }
+
+    if (deletionIds.length > 0) {
+      return db.regexScripts.bulkDelete(deletionIds);
+    }
+    return Promise.resolve();
+  } catch (error) {
+    console.log(error);
   }
 }

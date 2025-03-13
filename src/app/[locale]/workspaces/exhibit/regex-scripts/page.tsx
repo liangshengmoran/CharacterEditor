@@ -9,8 +9,10 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,13 +31,14 @@ import {
 import { useRouter } from '@/i18n/routing';
 import {
   addRegexScript,
+  deleteDuplicateRegex,
   deleteRegexxScript,
   exportRegex,
   getAllRegexScriptLists,
   importRegex,
 } from '@/lib/regex';
 import { atom, useAtom } from 'jotai';
-import { EllipsisVerticalIcon, ImportIcon, PlusIcon } from 'lucide-react';
+import { CopyXIcon, EllipsisVerticalIcon, ImportIcon, PlusIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -64,6 +67,7 @@ function Header() {
     <div className="flex justify-between">
       <div>{t('regex_scripts')}🚧</div>
       <div className="flex gap-x-2">
+        <DeleteDuplicateRegex />
         <Button onClick={() => setIsShowAddRegexScriptModal(true)} variant="outline" size="icon">
           <PlusIcon />
         </Button>
@@ -152,3 +156,37 @@ function AddRegexScriptModal() {
     </AlertDialog>
   );
 }
+
+const DeleteDuplicateRegex = () => {
+  const t = useTranslations();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDeleteDuplicate = () => {
+    const result = deleteDuplicateRegex();
+  };
+  return (
+    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+      <AlertDialogTrigger onClick={() => setIsOpen(true)} asChild>
+        <Button variant="outline" size="icon">
+          <CopyXIcon />
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{t('ays')}</AlertDialogTitle>
+          <AlertDialogDescription>
+            本操作将会删除重复的内容 <Badge>Beta</Badge>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel onClick={() => setIsOpen(false)}>{t('cancel')}</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={() => handleDeleteDuplicate()}
+            className={buttonVariants({ variant: 'destructive' })}
+          >
+            {t('delete')}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};

@@ -1,9 +1,8 @@
+import { CharacterBookTable, db } from '@/db/schema';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { omit } from 'es-toolkit/compat';
 import saveAs from 'file-saver';
 import { toast } from 'sonner';
-
-import { CharacterBookTable, db } from '@/db/schema';
 
 export async function addCharacterBook(name: string) {
   try {
@@ -279,5 +278,34 @@ export async function copyWorldBook(id: number) {
     toast.success('OK');
   } catch (e) {
     console.log(e);
+  }
+}
+
+export async function deleteDuplicateWorldBook() {
+  try {
+    const allEntries = await db.characterBook
+      .toArray()
+      .then((items) => items.map(({ id, entries }) => ({ id, entries })));
+    const entriesMap = new Map();
+    allEntries.forEach((item) => {
+      const key = JSON.stringify(item.entries);
+      if (!entriesMap.has(key)) {
+        entriesMap.set(key, []);
+      }
+      entriesMap.get(key).push(item.id);
+    });
+    const idsToDelete = [];
+    for (const [key, ids] of entriesMap as any) {
+      if (ids.length > 1) {
+        const sortedIds = [...ids].sort((a, b) => a - b);
+        idsToDelete.push(...sortedIds.slice(1));
+      }
+    }
+    if (idsToDelete.length > 0) {
+      return db.characterBook.bulkDelete(idsToDelete);
+    }
+    return Promise.resolve();
+  } catch (error) {
+    console.log(error);
   }
 }

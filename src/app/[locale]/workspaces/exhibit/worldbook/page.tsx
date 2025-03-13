@@ -5,10 +5,13 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Badge } from '@/components/ui/badge';
 import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Dialog,
@@ -38,12 +41,13 @@ import {
   addCharacterBook,
   copyWorldBook,
   deleteCharacterBook,
+  deleteDuplicateWorldBook,
   exportWorldBook,
   getAllCharacterBookLists,
   importCharacterBook,
 } from '@/lib/worldbook';
 import { atom, useAtom } from 'jotai';
-import { EllipsisVerticalIcon, ImportIcon, PlusIcon } from 'lucide-react';
+import { CopyXIcon, EllipsisVerticalIcon, ImportIcon, PlusIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
@@ -72,6 +76,7 @@ function Header() {
     <div className="flex justify-between">
       <div className="font-bold">{t('worldbook')}🚧</div>
       <div className="flex gap-x-2">
+        <DeleteDuplicateWorldBook />
         <Button onClick={() => setNewModal(true)} variant="outline" size="icon">
           <PlusIcon />
         </Button>
@@ -215,3 +220,37 @@ function DeleteCharacterBookModal({
     </AlertDialog>
   );
 }
+
+const DeleteDuplicateWorldBook = () => {
+  const t = useTranslations();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDeleteDuplicate = () => {
+    const result = deleteDuplicateWorldBook();
+  };
+  return (
+    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+      <AlertDialogTrigger onClick={() => setIsOpen(true)} asChild>
+        <Button variant="outline" size="icon">
+          <CopyXIcon />
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>{t('ays')}</AlertDialogTitle>
+          <AlertDialogDescription>
+            本操作将会删除重复的内容 <Badge>Beta</Badge>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel onClick={() => setIsOpen(false)}>{t('cancel')}</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={() => handleDeleteDuplicate()}
+            className={buttonVariants({ variant: 'destructive' })}
+          >
+            {t('delete')}
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};
