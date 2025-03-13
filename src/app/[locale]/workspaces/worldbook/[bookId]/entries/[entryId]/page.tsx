@@ -185,7 +185,7 @@ function EntryKeys({ field }: { field: 'keys' | 'secondary_keys' }) {
       ) : (
         <Label>{t('WorldBook.secondary_keys')}</Label>
       )}
-      <div className="flex-rows flex gap-2">
+      <div className="flex-rows flex-wrap flex gap-2">
         {list.map((content, index) => (
           <div key={index}>
             <Badge variant="outline">
