@@ -1,5 +1,6 @@
 'use client';
 
+import { TokenCounter } from '@/components/tokenCounter';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useRouter } from '@/i18n/routing';
@@ -51,7 +52,11 @@ function System_Prompt() {
     <>
       {cid ? (
         <div className="flex h-full flex-col overflow-hidden p-0.5">
-          <Label htmlFor="message">{t('Character.system_prompt')}</Label>
+          <div className="flex flex-row items-center justify-between">
+            <Label htmlFor="message">{t('Character.system_prompt')}</Label>
+            <TokenCounter text={inputValue} />
+          </div>
+
           <Textarea
             className="mt-4 flex-1 resize-none overflow-auto"
             placeholder={t('type messages')}

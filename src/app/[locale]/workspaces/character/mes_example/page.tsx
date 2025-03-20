@@ -1,5 +1,6 @@
 'use client';
 
+import { TokenCounter } from '@/components/tokenCounter';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { getCharacterField, updateSpecV1Character, usePageGuard } from '@/lib/character';
@@ -48,7 +49,10 @@ function Mes_Example() {
     <>
       {cid ? (
         <div className="flex h-full flex-col overflow-hidden p-0.5">
-          <Label htmlFor="message">{t('Character.mes_example')}</Label>
+          <div className="flex flex-row items-center justify-between">
+            <Label htmlFor="message">{t('Character.mes_example')}</Label>
+            <TokenCounter text={inputValue} />
+          </div>
           <Textarea
             className="mt-4 flex-1 resize-none overflow-auto"
             placeholder={t('type messages')}

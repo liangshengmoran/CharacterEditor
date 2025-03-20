@@ -1,5 +1,6 @@
 'use client';
 
+import { TokenCounter } from '@/components/tokenCounter';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,6 +35,7 @@ import { atom, useAtom } from 'jotai';
 import { PlusIcon, Trash2Icon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 
 export const runtime = 'edge';
 
@@ -66,6 +68,7 @@ function Header() {
   });
   const handleAddCharacterGreetings = async () => {
     addCharacterGreetings(cid as number);
+    toast.success(t('ais'));
   };
   const t = useTranslations();
   return (
@@ -126,17 +129,20 @@ function Alternate_Greetings() {
   }, [index]);
   return (
     <>
-      {index != 'null' ? (
-        <Textarea
-          onChange={(e) => {
-            const value = e.target.value;
-            setGreeting(value);
-            handleChangeText(value);
-          }}
-          value={greeting}
-          className="mt-4 h-full"
-          placeholder={t('type messages')}
-        />
+      {index !== 'null' ? (
+        <>
+          <Textarea
+            onChange={(e) => {
+              const value = e.target.value;
+              setGreeting(value);
+              handleChangeText(value);
+            }}
+            value={greeting}
+            className="mt-4 h-full"
+            placeholder={t('type messages')}
+          />
+          <TokenCounter text={greeting}></TokenCounter>
+        </>
       ) : (
         <></>
       )}

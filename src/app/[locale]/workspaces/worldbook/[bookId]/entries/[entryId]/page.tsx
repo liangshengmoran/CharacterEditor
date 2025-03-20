@@ -1,5 +1,6 @@
 'use client';
 
+import { TokenCounter } from '@/components/tokenCounter';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -129,14 +130,17 @@ function Content() {
   }, [entries?.content]);
 
   return (
-    <Textarea
-      value={inputValue}
-      onChange={(e) => {
-        setInputValue(e.target.value);
-        handleUpdate(e.target.value);
-      }}
-      className="h-[83vh]"
-    />
+    <>
+      <Textarea
+        value={inputValue}
+        onChange={(e) => {
+          setInputValue(e.target.value);
+          handleUpdate(e.target.value);
+        }}
+        className="h-[83vh]"
+      />
+      <TokenCounter text={inputValue} />
+    </>
   );
 }
 
