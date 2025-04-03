@@ -190,7 +190,7 @@ function ExportModal({
               </SelectContent>
             </Select>
             <Label>{t('regex_scripts')}</Label>
-            <div className="overflow-y-scroll sm:max-h-32 md:max-h-64">
+            <div className="overflow-y-scroll max-h-40 md:max-h-96">
               {regexLists?.map((list) => (
                 <div className="grid grid-cols-1 gap-y-1 overflow-y-hidden" key={list.id}>
                   <div>
