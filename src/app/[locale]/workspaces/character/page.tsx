@@ -20,8 +20,6 @@ import {
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
-export const runtime = 'edge';
-
 function page() {
   usePageGuard();
   return (

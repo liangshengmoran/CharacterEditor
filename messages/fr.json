@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "Éditeur de Fiche de Personnage IA | OoC Moe",
+    "title": "Éditeur de Fiche de Personnage IA",
     "description": "Modifier en ligne la fiche de personnage IA Supporte la Taverne Sillytavern"
   },
-  "hero": "Éditeur de Fiche de Personnage IA | OoC Moe",
+  "hero": "Éditeur de Fiche de Personnage IA",
   "character_editor": "Éditeur de Fiche de Personnage IA",
   "cancel": "Annuler",
   "delete": "Supprimer",
@@ -93,7 +93,8 @@
     "settings": "Paramètres",
     "CatboxGallery": "Galerie CatBox",
     "oocmoe": "OoC Moe",
-    "about": "À propos"
+    "about": "À propos",
+    "convertCharacterToJson": "Convertir le personnage en Json"
   },
   "theme": "Thème",
   "language": "Langue",
@@ -133,5 +134,8 @@
     "nonpossession": "Non-possession",
     "with-all": "Avec tous"
   },
-  "position": "Position"
+  "position": "Position",
+  "Success": {
+    "copySuccess": "Copie réussie"
+  }
 }

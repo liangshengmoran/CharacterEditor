@@ -8,7 +8,6 @@ import { CopyIcon, ImportIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
-export const runtime = 'edge';
 function page() {
   return (
     <>
@@ -79,5 +78,5 @@ function Header() {
 
 function ConvertCharacterToJson() {
   const [preview, setPreview] = useAtom(previewAtom);
-  return <Textarea className="h-full w-full mt-2 whitespace-pre font-mono text-sm" value={preview} />;
+  return <Textarea className="h-full w-full mt-2 whitespace-pre font-mono text-sm" value={preview} readOnly />;
 }

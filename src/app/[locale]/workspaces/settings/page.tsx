@@ -2,7 +2,6 @@ import { LanguageToggle } from '@/components/language-toggle';
 import { ModeToggle } from '@/components/mode-toggle';
 import { useTranslations } from 'next-intl';
 
-export const runtime = 'edge';
 function page() {
   return (
     <>

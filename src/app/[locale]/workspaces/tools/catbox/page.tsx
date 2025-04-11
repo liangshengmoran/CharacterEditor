@@ -34,8 +34,6 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-export const runtime = 'edge';
-
 const newGalleryModalAtom = atom(false);
 const deleteGalleryModalAtom = atom(false);
 const deleteGalleryIdAtom = atom<number | null>();
@@ -94,7 +92,9 @@ function Gallery() {
                 <TableCell>{list.name}</TableCell>
                 <TableCell className="text-right">
                   <DropdownMenu>
-                    <DropdownMenuTrigger>{t('action')}</DropdownMenuTrigger>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="sm">{t('action')}</Button>
+                    </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem
                         onClick={() => router.push(`/workspaces/tools/catbox/${list.id}`)}

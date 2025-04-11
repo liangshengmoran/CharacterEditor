@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "AI 角色卡編輯器 | OoC萌",
+    "title": "AI 角色卡編輯器",
     "description": "線上編輯 AI 角色卡 支援酒館Sillytavern"
   },
-  "hero": "AI 角色卡編輯器 | OoC萌",
+  "hero": "AI 角色卡編輯器",
   "character_editor": "AI 角色卡編輯器",
   "cancel": "取消",
   "delete": "刪除",
@@ -93,7 +93,8 @@
     "settings": "設定",
     "CatboxGallery": "CatBox畫廊庫",
     "oocmoe": "OoC萌",
-    "about": "關於"
+    "about": "關於",
+    "convertCharacterToJson": "轉換角色卡到Json"
   },
   "theme": "主題",
   "language": "語言",
@@ -133,5 +134,8 @@
     "nonpossession": "非任意",
     "with-all": "與所有"
   },
-  "position": "位置"
+  "position": "位置",
+  "Success": {
+    "copySuccess": "複製成功"
+  }
 }

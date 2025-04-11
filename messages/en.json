@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "AI Character Card Editor | OoC Moe",
+    "title": "AI Character Card Editor",
     "description": "Online editing of AI character cards, supports TavernAI/SillyTavern"
   },
-  "hero": "AI Character Card Editor | OoC Moe",
+  "hero": "AI Character Card Editor",
   "character_editor": "AI Character Card Editor",
   "cancel": "Cancel",
   "delete": "Delete",
@@ -135,7 +135,6 @@
     "with-all": "With All"
   },
   "position": "Position",
-  "convertCharacterToJson": "Convert Character to json",
   "Success": {
     "copySuccess": "Copy Success"
   }

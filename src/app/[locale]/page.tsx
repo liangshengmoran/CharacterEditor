@@ -6,7 +6,6 @@ import { Link } from '@/i18n/routing';
 import { ActivityIcon, Code, PenIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export const runtime = 'edge';
 export default function Home() {
   const t = useTranslations();
   return (

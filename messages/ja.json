@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "AI キャラクターカードエディター | OoC萌",
+    "title": "AI キャラクターカードエディター",
     "description": "オンラインでAIキャラクターカードを編集。Sillytavern酒場に対応"
   },
-  "hero": "AI キャラクターカードエディター | OoC萌",
+  "hero": "AI キャラクターカードエディター",
   "character_editor": "AI キャラクターカードエディター",
   "cancel": "キャンセル",
   "delete": "削除",
@@ -93,7 +93,8 @@
     "settings": "設定",
     "CatboxGallery": "CatBoxギャラリー",
     "oocmoe": "OoC萌",
-    "about": "关于"
+    "about": "关于",
+    "convertCharacterToJson": "キャラクターをJsonに変換"
   },
   "theme": "テーマ",
   "language": "言語",
@@ -133,5 +134,8 @@
     "nonpossession": "非所有",
     "with-all": "所有"
   },
-  "position": "位置"
+  "position": "位置",
+  "Success": {
+    "copySuccess": "コピー成功"
+  }
 }

@@ -63,8 +63,6 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-export const runtime = 'edge';
-
 const greetingIndexAtom = atom<string | null>('null');
 const sortGreetingModalAtom = atom<boolean>(false);
 const deleteModalAtom = atom(false);
@@ -114,7 +112,7 @@ function Header() {
             <SelectContent>
               <SelectGroup>
                 {lists?.map((list, index) => (
-                  <SelectItem value={String(index)}>{index + 1}</SelectItem>
+                  <SelectItem key={index} value={String(index)}>{index + 1}</SelectItem>
                 ))}
               </SelectGroup>
             </SelectContent>

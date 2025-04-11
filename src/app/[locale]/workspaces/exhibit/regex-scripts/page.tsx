@@ -43,8 +43,6 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-export const runtime = 'edge';
-
 const addRegexScriptModalAtom = atom(false);
 
 function page() {
@@ -67,11 +65,11 @@ function Header() {
     <div className="flex justify-between">
       <div>{t('regex_scripts')}🚧</div>
       <div className="flex gap-x-2">
-        <DeleteDuplicateRegex />
-        <Button onClick={() => setIsShowAddRegexScriptModal(true)} variant="outline" size="icon">
+        <DeleteDuplicateRegex key="delete-duplicate" />
+        <Button key="add-regex" onClick={() => setIsShowAddRegexScriptModal(true)} variant="outline" size="icon">
           <PlusIcon />
         </Button>
-        <Button onClick={importRegex} variant="outline" size="icon">
+        <Button key="import-regex" onClick={importRegex} variant="outline" size="icon">
           <ImportIcon />
         </Button>
       </div>
@@ -101,7 +99,7 @@ function RegexList() {
             <TableCell>{list.scriptName}</TableCell>
             <TableCell className="text-right">
               <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
                   <Button variant="link" size="icon">
                     <EllipsisVerticalIcon />
                   </Button>

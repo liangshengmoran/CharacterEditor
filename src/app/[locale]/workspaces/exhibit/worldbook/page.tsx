@@ -52,8 +52,6 @@ import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import { toast } from 'sonner';
 
-export const runtime = 'edge';
-
 const newWorldBookModalAtom = atom(false);
 
 function page() {

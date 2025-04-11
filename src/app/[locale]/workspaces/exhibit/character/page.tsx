@@ -30,13 +30,11 @@ import {
 } from '@/lib/character';
 import { selectedCharacterIdAtom } from '@/store/action';
 import { atom, useAtom } from 'jotai';
-import { EllipsisVerticalIcon, FileStackIcon, ImportIcon, PlusIcon } from 'lucide-react';
+import { EllipsisVerticalIcon, FileInput, ImportIcon, PlusIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-
-export const runtime = 'edge';
 
 const addCharacterModalAtom = atom(false);
 const characterCoverModalAtom = atom(false);
@@ -70,7 +68,7 @@ function Header() {
           <PlusIcon />
         </Button>
         <Button variant="outline" size="icon" onClick={importCharacters}>
-          <FileStackIcon />
+          <FileInput />
         </Button>
         <Button variant="outline" size="icon" onClick={importCharacter}>
           <ImportIcon />
@@ -134,7 +132,7 @@ function CharacterLists() {
             return (
               <li key={list.id}>
                 <DropdownMenu>
-                  <DropdownMenuTrigger>
+                  <DropdownMenuTrigger asChild>
                     <div className="relative inline-block">
                       <span className="absolute right-2 top-2 flex size-3">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
@@ -177,7 +175,7 @@ function CharacterLists() {
           return (
             <li key={list.id} className="group hover:opacity-90">
               <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
                   <Image
                     className="aspect-[3/4] h-full rounded-xl object-cover"
                     src={list.cover}
@@ -239,7 +237,7 @@ function CharacterLists() {
                   </div>
                 </div>
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="ml-auto">
+                  <DropdownMenuTrigger asChild className="ml-auto">
                     <EllipsisVerticalIcon />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -282,7 +280,7 @@ function CharacterLists() {
                 </div>
               </div>
               <DropdownMenu>
-                <DropdownMenuTrigger className="ml-auto">
+                <DropdownMenuTrigger asChild className="ml-auto">
                   <EllipsisVerticalIcon />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">

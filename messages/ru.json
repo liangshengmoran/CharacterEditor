@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "Редактор карточек AI персонажей | OoC Moe",
+    "title": "Редактор карточек AI персонажей",
     "description": "Онлайн редактирование карточек AI персонажей, поддержка 酒馆Sillytavern"
   },
-  "hero": "Редактор карточек AI персонажей | OoC Moe",
+  "hero": "Редактор карточек AI персонажей",
   "character_editor": "Редактор карточек AI персонажей",
   "cancel": "Отмена",
   "delete": "Удалить",
@@ -93,7 +93,8 @@
     "settings": "Настройки",
     "CatboxGallery": "Галерея CatBox",
     "oocmoe": "OoC Moe",
-    "about": "О сайте"
+    "about": "О сайте",
+    "convertCharacterToJson": "Конвертировать персонажа в Json"
   },
   "theme": "Тема",
   "language": "Язык",
@@ -133,5 +134,8 @@
     "nonpossession": "Не любое",
     "with-all": "Со всеми"
   },
-  "position": "Позиция"
+  "position": "Позиция",
+  "Success": {
+    "copySuccess": "Успешно скопировано"
+  }
 }

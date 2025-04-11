@@ -4,8 +4,6 @@ import { useRouter } from '@/i18n/routing';
 import { ArrowRightIcon, CogIcon, FileJsonIcon, InfoIcon, PawPrintIcon, RegexIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-export const runtime = 'edge';
-
 function page() {
   return (
     <>
@@ -26,7 +24,7 @@ const navlists = [
   { name: 'settings', path: 'settings', icon: CogIcon },
   { name: 'regex_scripts', path: 'exhibit/regex-scripts/', icon: RegexIcon },
   { name: 'Nav.CatboxGallery', path: 'tools/catbox', icon: PawPrintIcon },
-  { name: 'Nav.convertCharacterToJson', path: 'tools/convert', icon: FileJsonIcon },
+  { name: 'convertCharacterToJson', path: 'tools/convert', icon: FileJsonIcon },
   { name: 'about', path: 'about', icon: InfoIcon },
 ];
 

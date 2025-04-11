@@ -40,8 +40,6 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { v7 as uuidv7 } from 'uuid';
 
-export const runtime = 'edge';
-
 const newGalleryModalAtom = atom(false);
 const exportGalleryModalAtom = atom(false);
 const importGalleryModalAtom = atom(false);
@@ -267,7 +265,7 @@ function GalleryList() {
           {lists.map((list) => (
             <li key={list.uuid}>
               <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
                   <Image src={list.url} alt={list.name} width={1000} height={1000} />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>

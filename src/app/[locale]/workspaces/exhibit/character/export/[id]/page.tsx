@@ -37,8 +37,6 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
 
-export const runtime = 'edge';
-
 function page() {
   return (
     <>

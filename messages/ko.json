@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "AI 캐릭터 카드 편집기 | OoC Moe",
+    "title": "AI 캐릭터 카드 편집기",
     "description": "온라인에서 AI 캐릭터 카드를 편집하고 Sillytavern 술집을 지원합니다."
   },
-  "hero": "AI 캐릭터 카드 편집기 | OoC Moe",
+  "hero": "AI 캐릭터 카드 편집기",
   "character_editor": "AI 캐릭터 카드 편집기",
   "cancel": "취소",
   "delete": "삭제",
@@ -93,7 +93,8 @@
     "settings": "설정",
     "CatboxGallery": "CatBox 갤러리",
     "oocmoe": "OoC Moe",
-    "about": "정보"
+    "about": "정보",
+    "convertCharacterToJson": "캐릭터를 Json으로 변환"
   },
   "theme": "테마",
   "language": "언어",
@@ -133,5 +134,8 @@
     "nonpossession": "임의 아님",
     "with-all": "모두"
   },
-  "position": "위치"
+  "position": "위치",
+  "Success": {
+    "copySuccess": "복사 성공"
+  }
 }

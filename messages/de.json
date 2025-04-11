@@ -1,9 +1,9 @@
 {
   "Metadata": {
-    "title": "KI-Charakterkarten-Editor | OoC Moe",
+    "title": "KI-Charakterkarten-Editor",
     "description": "Online-Editor für KI-Charakterkarten, unterstützt Sillytavern"
   },
-  "hero": "KI-Charakterkarten-Editor | OoC Moe",
+  "hero": "KI-Charakterkarten-Editor",
   "character_editor": "KI-Charakterkarten-Editor",
   "cancel": "Abbrechen",
   "delete": "Löschen",
@@ -93,7 +93,8 @@
     "settings": "Einstellungen",
     "CatboxGallery": "CatBox-Galerie",
     "oocmoe": "OoC Moe",
-    "about": "Über"
+    "about": "Über",
+    "convertCharacterToJson": "Charakter in Json konvertieren"
   },
   "theme": "Thema",
   "language": "Sprache",
@@ -133,5 +134,8 @@
     "nonpossession": "Nicht beliebig",
     "with-all": "Mit allen"
   },
-  "position": "Position"
+  "position": "Position",
+  "Success": {
+    "copySuccess": "Kopieren erfolgreich"
+  }
 }
